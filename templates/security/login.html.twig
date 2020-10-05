@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;500;700&display=swap" rel="stylesheet">
+
+    {% block stylesheets %}
+        <link href="{{ asset('assets/css/loginForm.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
+
+    <title>Connexion</title>
+</head>
+<body>
+    <form method="post">
+        {% if error %}
+            <div class="msg-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+    
+        <h1 class="h3 mb-3 font-weight-normal">Veuillez entrer vos identifiants</h1>
+        <label for="email">Email</label>
+        <input type="email" value="{{ last_username }}" name="email" id="email" class="form-control" required autofocus>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control" required>
+    
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+    
+        <button type="submit">
+            Connexion
+        </button>
+        <!-- <p> Ou <a href="">créez un compte</a> maintenant ! </p> -->
+    </form>
+</body>
+</html>
+
+

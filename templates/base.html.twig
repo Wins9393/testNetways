@@ -2,11 +2,31 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href="{{ asset('assets/css/styles.css') }}" type="text/css" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;500;700&display=swap" rel="stylesheet"> 
+        {% endblock %}
+        <title>{% block title %}Netways Books{% endblock %}</title>
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+
+        <div class="app">
+
+            <header class="navbar">
+                <div class="accueil">
+                    <a href="#"><h1>NetWays Books</h1></a>
+                </div>
+                <div class="nav-link">
+                    <ul>
+                        <li><a href="{{ path('app_home_creerlivre') }}">Se connecter</a></li>
+                        <li><a href="#">S'inscrire</a></li>
+                    </ul>
+                </div>
+            </header>
+        
+        {% endblock %}
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

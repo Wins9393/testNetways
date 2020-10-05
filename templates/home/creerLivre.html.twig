@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;500;700&display=swap" rel="stylesheet">
+
+    {% block stylesheets %}
+        <link href="{{ asset('assets/css/creerLivre.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
+
+    <title>Ajouter un livre</title>
+</head>
+<body>
+    <div class="container">
+        <div class="titre">
+            <h1>Créer un livre</h1>
+        </div>
+
+        {{ form_start(formLivre) }}
+            {{ form_widget(formLivre )}}
+
+            <input id="submit" type="submit" value="Ajouter le livre">
+        {{ form_end(formLivre) }}
+
+    </div>
+    
+    
+</body>
+</html>

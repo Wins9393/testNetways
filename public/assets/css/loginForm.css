@@ -1,0 +1,32 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.msg-danger{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    color: white;
+    background: red;
+    font-size: 1.5rem;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button[type="submit"]{
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    background: #2C3A47;
+    color: white;
+    font-size: 1.2rem;
+}

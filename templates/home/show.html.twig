@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}
+        <link href="{{ asset('assets/css/styles.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
+</head>
+<body>
+    <div class="cardBook">
+        <div class="titre">
+            <h3>{{ livre.getTitre }}</h3>
+        </div>
+        <div class="dates">
+            <div class="edition">
+                <p>Paru le: </p> <p>{{ livre.getDateEdition()|date("d-m-Y") }}</p> 
+            </div>
+            <div class="ajout">
+                <p>Ajouté le: </p> <p>{{ livre.getDateAjout()|date("d-m-Y") }}</p>  
+            </div>
+            <div class="modif">
+                <p>Modifié le: </p> <p>{{ livre.getDateModif()|date("d-m-Y") }}</p>  
+            </div>
+        </div>
+        <div class="auteur">
+            <p>{{ livre.getAuteur() }}</p> 
+        </div>
+    </div>
+    <div class="edit">
+        <p><a href="{{ path('app_home_modiflivre', {id: livre.id}) }}">Modifier le livre</a></p>
+    </div>
+    <div class="delete">
+        <p>
+            <a href="#" onclick="event.preventDefault(); 
+            confirm('Êtes vous sûr de vouloir supprimer ce livre ?') && document.querySelector('#js-supp-livre').submit()">Supprimer le livre</a>
+        </p>
+    </div>
+    <div class="retour">
+        <p><a href="{{ path('app_home_indexlogin') }}">Revenir à la bibliothèque</a></p>
+    </div>
+
+    <form id="js-supp-livre" action="{{ path('app_home_supplivre', {id: livre.id}) }}" method="post" style="display: none;">
+        <input type="hidden" name="_method" value="DELETE">
+    </form>
+</body>
+</html>

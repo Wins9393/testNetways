@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;500;700&display=swap" rel="stylesheet">
+
+    {% block stylesheets %}
+        <link href="{{ asset('assets/css/styles.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
+
+    <title>Netways Books - Accueil</title>
+</head>
+<body>
+    
+    <div class="app">
+
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="msg-{{ type }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <header class="navbar">
+            <div class="accueil">
+                <a href="#"><h1>NetWays Books</h1></a>
+            </div>
+            <div class="nav-link">
+                <ul>
+                    <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+                    <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="bibli">
+            <h1>La bibliothèque contient actuellement {{ livres|length }} livres</h1>
+        </div>
+
+        <section class="container">
+
+            {% for livre in livres %}
+                <div class="cardBook">
+                    <div class="titre">
+                        <h3>{{ livre.getTitre }}</h3>
+                    </div>
+                    <div class="dates">
+                        <div class="edition">
+                            <p>Paru le: </p> <p>{{ livre.getDateEdition()|date("d-m-Y") }}</p> 
+                        </div>
+                        <div class="ajout">
+                            <p>Ajouté le: </p> <p>{{ livre.getDateAjout()|date("d-m-Y") }}</p>  
+                        </div>
+                        <div class="modif">
+                            <p>Modifié le: </p> <p>{{ livre.getDateModif()|date("d-m-Y") }}</p>  
+                        </div>
+                    </div>
+                    <div class="auteur">
+                        <p>{{ livre.getAuteur() }}</p> 
+                    </div>
+                </div>
+            {% else %}
+                <p>La bibliothèque est vide ! :/</p>
+            {% endfor %}
+
+        </section>
+
+        <footer>
+            <p>Netways Books © 2020</p>
+        </footer>
+
+    </div>
+    
+</body>
+</html>
